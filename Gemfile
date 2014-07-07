@@ -36,6 +36,8 @@ gem 'gon'
 gem 'browser'
 # Log in capabilities
 gem 'devise'
+# Require JS
+gem 'requirejs-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

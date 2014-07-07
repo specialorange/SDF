@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707180831) do
+ActiveRecord::Schema.define(version: 20140707181038) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 20140707180831) do
   create_table "grades", force: true do |t|
     t.string   "period"
     t.string   "grade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

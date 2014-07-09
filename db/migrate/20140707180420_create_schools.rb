@@ -2,7 +2,7 @@ class CreateSchools < ActiveRecord::Migration
   def change
     create_table :schools do |t|
       t.string :title
-      t.string :type
+      t.string :level
       t.string :address
       t.string :phone
 

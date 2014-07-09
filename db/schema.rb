@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709132113) do
+ActiveRecord::Schema.define(version: 20140709163149) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
@@ -25,7 +25,12 @@ ActiveRecord::Schema.define(version: 20140709132113) do
     t.string   "grade"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "school_id"
+    t.integer  "user_id"
   end
+
+  add_index "grades", ["school_id"], name: "index_grades_on_school_id"
+  add_index "grades", ["user_id"], name: "index_grades_on_user_id"
 
   create_table "roles", force: true do |t|
     t.string   "type"
@@ -35,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140709132113) do
 
   create_table "schools", force: true do |t|
     t.string   "title"
-    t.string   "type"
+    t.string   "level"
     t.string   "address"
     t.string   "phone"
     t.datetime "created_at"
@@ -43,8 +48,7 @@ ActiveRecord::Schema.define(version: 20140709132113) do
   end
 
   create_table "settings", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "mic_level"
+    t.integer  "mic_level",  default: 1, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,7 +58,10 @@ ActiveRecord::Schema.define(version: 20140709132113) do
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "songs", ["user_id"], name: "index_songs_on_user_id"
 
   create_table "user_roles", force: true do |t|
     t.integer  "user_id"

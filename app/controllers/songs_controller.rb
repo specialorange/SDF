@@ -1,51 +1,84 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
+  # before_filter :authenticate_user!
 
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    if user_signed_in? 
+      gon.userID = current_user.thisUsersID
+      gon.micLevel = Setting.find(current_user.thisUsersID).mic_level
+      @user = current_user
+      @songs = @user.songs
+      logger.debug 'index logger \n\n\n\n\n\n'
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @songs }
+    end
   end
 
   # GET /songs/1
   # GET /songs/1.json
   def show
+    @song = Song.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @song }
+    end
   end
 
   # GET /songs/new
+  # GET /songs/new.json
   def new
     @song = Song.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @song }
+    end
   end
 
   # GET /songs/1/edit
   def edit
+    @song = Song.find(params[:id])
   end
 
   # POST /songs
   # POST /songs.json
   def create
-    @song = Song.new(song_params)
+    @song = Song.new()
+    @song.content = params[:content]
+    @song.title = params[:title]
+    @song.user_id = current_user.id
+
+    logger.debug '@song:'
+    logger.debug @song
 
     respond_to do |format|
       if @song.save
         format.html { redirect_to @song, notice: 'Song was successfully created.' }
-        format.json { render :show, status: :created, location: @song }
+        format.json { render json: @song, status: :created, location: @song }
       else
-        format.html { render :new }
+        format.html { render action: "new" }
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /songs/1
-  # PATCH/PUT /songs/1.json
+  # PUT /songs/1
+  # PUT /songs/1.json
   def update
+    @song = Song.find(params[:id])
+
     respond_to do |format|
-      if @song.update(song_params)
+      if @song.update_attributes(params[:song])
         format.html { redirect_to @song, notice: 'Song was successfully updated.' }
-        format.json { render :show, status: :ok, location: @song }
+        format.json { head :no_content }
       else
-        format.html { render :edit }
+        format.html { render action: "edit" }
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
@@ -54,21 +87,12 @@ class SongsController < ApplicationController
   # DELETE /songs/1
   # DELETE /songs/1.json
   def destroy
+    @song = Song.find(params[:id])
     @song.destroy
+
     respond_to do |format|
-      format.html { redirect_to songs_url, notice: 'Song was successfully destroyed.' }
+      format.html { redirect_to songs_url }
       format.json { head :no_content }
     end
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_song
-      @song = Song.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def song_params
-      params.require(:song).permit(:title, :content)
-    end
 end

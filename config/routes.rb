@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :settings
+
+  devise_for :users
   resources :roles
 
   resources :grades

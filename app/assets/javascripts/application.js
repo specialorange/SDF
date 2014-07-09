@@ -23,7 +23,7 @@
 require ['jquery', 'backbone', 'SOF'], ($, Backbone, SOF) ->
   # Start up the app once the DOM is ready
   $ ->
-    window.App = new SOF()
+    window.App = new SOF(App.songs)
     Backbone.history.start
       pushState: true
-    window.App.start()
+    // window.App.start()

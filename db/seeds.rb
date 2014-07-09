@@ -78,7 +78,6 @@ puts 'SETTING UP DEFAULT GRADES'.colorize( :color => :black, :background => :whi
  grades2 = Grade.create( period: 'Class 2', grade: '7th Grade', user_id: teacher2.id, school_id: school1.id )
  grades3 = Grade.create( period: 'Class 3', grade: '8th Grade', user_id: teacher3.id, school_id: school1.id )
 
-
 # Complete
 puts 'SEEDING DATABASE COMPLETE!!'.colorize( :color => :green)
   

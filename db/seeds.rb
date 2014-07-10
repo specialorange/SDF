@@ -10,22 +10,22 @@
 
 # Users
 puts 'SETTING UP DEFAULT USER LOGIN'.colorize( :color => :light_blue, :background => :green )
-  petey = User.create(:email => "asdf@jkl.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  chris = User.create(:email => "asdf@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  joe = User.create(:email => "joe@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  teacher1 = User.create(:email => "t1@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  teacher2 = User.create(:email => "t2@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  teacher3 = User.create(:email => "t3@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student1 = User.create(:email => "s1@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student2 = User.create(:email => "s2@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student3 = User.create(:email => "s3@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student4 = User.create(:email => "s4@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student5 = User.create(:email => "s5@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student6 = User.create(:email => "s6@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student7 = User.create(:email => "s7@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student8 = User.create(:email => "s8@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student9 = User.create(:email => "s9@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
-  student10 = User.create(:email => "s10@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  petey = User.create(:fName => "Petey", :lName => "Mainardi", :email => "asdf@jkl.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  chris = User.create(:fName => "Chris", :lName => "Frisina", :email => "asdf@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  joe = User.create(:fName => "Joe", :lName => "Bruzek", :email => "joe@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  teacher1 = User.create(:fName => "Teacher", :lName => "One", :email => "t1@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  teacher2 = User.create(:fName => "Teacher", :lName => "Two", :email => "t2@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  teacher3 = User.create(:fName => "Teacher", :lName => "Three", :email => "t3@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student1 = User.create(:fName => "Student", :lName => "One", :email => "s1@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student2 = User.create(:fName => "Student", :lName => "Two", :email => "s2@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student3 = User.create(:fName => "Student", :lName => "Three", :email => "s3@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student4 = User.create(:fName => "Student", :lName => "Four", :email => "s4@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student5 = User.create(:fName => "Student", :lName => "Five", :email => "s5@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student6 = User.create(:fName => "Student", :lName => "Six", :email => "s6@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student7 = User.create(:fName => "Student", :lName => "Seven", :email => "s7@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student8 = User.create(:fName => "Student", :lName => "Eight", :email => "s8@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student9 = User.create(:fName => "Student", :lName => "Nine", :email => "s9@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
+  student10 = User.create(:fName => "Student", :lName => "Ten", :email => "s10@asdf.com", :password => "asdfasdf", :password_confirmation => "asdfasdf")
 
 # Settings
 puts 'SETTING UP DEFAULT SETTINGS'.colorize( :color => :light_green, :background => :blue )
@@ -43,8 +43,6 @@ puts 'SETTING UP DEFAULT SETTINGS'.colorize( :color => :light_green, :background
 
 # Songs
 puts 'SETTING UP DEFAULT SONGS'.colorize( :color => :black, :background => :red )
-# p chris.id
-# p chris.index
   songs1 = Song.create( title: 'song title 1', content: 'song content 1', user_id: petey.id )
   songs2 = Song.create( title: 'song title 2', content: 'song content 2', user_id: joe.id )
   songs3 = Song.create( title: 'song title 3', content: 'song content 3', user_id: chris.id )
@@ -77,6 +75,20 @@ puts 'SETTING UP DEFAULT GRADES'.colorize( :color => :black, :background => :whi
  grades1 = Grade.create( period: 'Class 1', grade: '6th Grade', user_id: teacher1.id, school_id: school1.id)
  grades2 = Grade.create( period: 'Class 2', grade: '7th Grade', user_id: teacher2.id, school_id: school1.id )
  grades3 = Grade.create( period: 'Class 3', grade: '8th Grade', user_id: teacher3.id, school_id: school1.id )
+
+# Roles
+puts 'Assigning Grades to Teachers'.colorize( :color => :orange, :background => :blue )
+  teacherRole = Role.create( label: 'Teacher' )
+  adminRole = Role.create( label: 'Admin' )
+  studentRole = Role.create( label: 'Student' )
+
+# Assigning Roles to Teachers
+puts 'Assigning Roles to Teachers'.colorize( :color => :yellow, :background => :aquamarine )
+  UserRole.create( user_id: teacher1.id, role_id: teacherRole.id )
+  UserRole.create( user_id: teacher2.id, role_id: teacherRole.id )
+  UserRole.create( user_id: teacher3.id, role_id: teacherRole.id )
+  UserRole.create( user_id: petey.id, role_id: teacherRole.id )
+  UserRole.create( user_id: petey.id, role_id: adminRole.id )
 
 # Complete
 puts 'SEEDING DATABASE COMPLETE!!'.colorize( :color => :green)

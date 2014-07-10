@@ -19,7 +19,8 @@ group :development, :test do
   gem 'therubyracer',  platforms: :ruby
   gem 'colorize'
   # For better errors!
-  gem "better_errors"
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 # Twitter Bootstrap
@@ -59,7 +60,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Backbone JS
-gem "rails-backbone"
+gem 'rails-backbone'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

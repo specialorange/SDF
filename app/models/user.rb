@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     return self.fName + ' ' + self.lName
   end
 
+  def thisUsersID
+    self.id
+  end
+
   # def owner
   #     self.user_id = current_user.id
   # end

@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_many :userRoles
   has_many :roles, :through => :userRoles
 
+  has_one :setting
+  has_many :songs
+
   def thisUsersUserRole
     arrayOfUserRoles = []
     self.userRoles.each do |ur|

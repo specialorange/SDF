@@ -20,10 +20,13 @@
 //removedForRequireJs/ = require backbone/sdf
 //removedForRequireJs/ = require_tree .
 
-require ['jquery', 'backbone', 'SOF'], ($, Backbone, SOF) ->
-  # Start up the app once the DOM is ready
-  $ ->
-    window.App = new SOF(App.songs)
-    Backbone.history.start
-      pushState: true
-    // window.App.start()
+require(['jquery', 'backbone', 'SDF'], function($, Backbone, SDF) {
+  return $(function() {
+    window.App = new SDF(App.songs);
+    // return Backbone.history.start({
+    //   pushState: true
+    // }
+    // ,window.App.start()
+    // );
+  });
+});

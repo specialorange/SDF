@@ -12,12 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
     <%= f.label :mic_level %><br>
-    <%= f.number_field :mic_level %>
+    <%= f.number_field :mic_level, :value => (number_with_precision(f.object.mic_level, :precision => 2) || 0) %>
   </div>
   <div class="actions">
     <%= f.submit %>

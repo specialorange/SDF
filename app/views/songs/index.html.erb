@@ -1,3 +1,32 @@
+<h1>Listing songs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.title %></td>
+        <td><%= song.content %></td>
+        <td><%= link_to 'Show', song %></td>
+        <td><%= link_to 'Edit', edit_song_path(song) %></td>
+        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Song', new_song_path %>
+
+
 <div id="top-row" class="row-fluid">
   <div id="conductor" class="play span1"></div>
   <!-- Range from 5 to 11 -->
@@ -5,7 +34,7 @@
   <div id="system-label-container" class="span3 offset1"></div>
   <!-- <div id="measure-transformation" class="span6"></div> -->
 </div>
-<hr class="light-hr">
+
 <div id="middle-row" class="row-fluid">
   <div id="middle-left-column" class="span12">
     <div id="show-song">

@@ -24,6 +24,7 @@ group :development, :test do
 end
 
 # Twitter Bootstrap
+gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 # D3
 gem 'd3_rails'

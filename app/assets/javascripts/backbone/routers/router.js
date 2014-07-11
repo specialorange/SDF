@@ -6,21 +6,24 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'backbone/views/home/homeView',
-  'backbone/views/slider/beatsPerMeasureSliderView',
-  'backbone/views/stage/stageView',
-  'backbone/views/slider/tempoSliderView',
-  'backbone/views/conductor/conductorView',
-  'backbone/views/button/wholeMeasureRepresentationView',
-  'backbone/views/button/remainingInstrumentGeneratorView',
-  'backbone/views/label/systemLabelContainerView',
+  // 'backbone/views/slider/beatsPerMeasureSliderView',
+  // 'backbone/views/stage/stageView',
+  // 'backbone/views/slider/tempoSliderView',
+  // 'backbone/views/conductor/conductorView',
+  // 'backbone/views/button/wholeMeasureRepresentationView',
+  // 'backbone/views/button/remainingInstrumentGeneratorView',
+  // 'backbone/views/label/systemLabelContainerView',
   'app/log',
-  'backbone/collections/songsCollection',
-  'backbone/views/song/new_view',
-  'backbone/views/song/index_view',
-  'backbone/views/song/show_view',
-  'backbone/views/song/edit_view'
-], function($, _, Backbone, mainHomeView, beatsPerMeasureSliderView, StageView, tempoSliderView, conductorView, wholeMeasureRepresentationView, remainingInstrumentGeneratorView, systemLabelContainerView, log, songsCollection, songsViewNew, songsViewIndex, songsViewShow, songsViewEdit ){
+  'backbone/collections/songs',
+  'backbone/views/songs/new_view'
+  // 'backbone/views/song/index_view',
+  // 'backbone/views/song/show_view',
+  // 'backbone/views/song/edit_view'
+], function($, _, Backbone,
+  // beatsPerMeasureSliderView, StageView, tempoSliderView, conductorView, wholeMeasureRepresentationView, remainingInstrumentGeneratorView, systemLabelContainerView,
+  log, songsCollection, songsViewNew
+  // songsViewIndex, songsViewShow, songsViewEdit
+   ){
 
   var BBRouter = Backbone.Router.extend({
     // songs: {},
@@ -35,43 +38,31 @@ define([
     newSong: function(){
       console.log('BB routes => new : newSong');
       var view = new songsViewNew({collection : this.songs});
-      // general
-      mainHomeView.render();
 
       // top side
-      conductorView.render();
-      wholeMeasureRepresentationView.render();
+      // conductorView.render();
+      // wholeMeasureRepresentationView.render();
       // measureTransformationView.render();
 
       // middle
-      StageView.render();
-      systemLabelContainerView.render();
+      // StageView.render();
+      // systemLabelContainerView.render();
 
       // bottom
 
       // unused/old/deprecated
       // remainingInstrumentGeneratorView.render();
     },
-
     index: function(){
       console.log('BB Router => index : index');
       var view = new songsViewIndex({collection : this.songs});
     },
-
     show: function(id){
       var currentIDSong = window.router.songs.get(id);
       console.warn(currentIDSong);
       //left side
       var view = new songsViewShow(currentIDSong);
-      //right side
-      fractionRepresentionView.render();
-      wholeMeasureRepresentationView.render();
-      measureTransformationView.render();
-      tempoSliderView.render();
-      conductorView.render();
-      recorderView.render();
     },
-
     edit: function(id){
       console.log('BB Router edit');
     },

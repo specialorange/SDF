@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @setting.user_id %>
-</p>
-
-<p>
   <strong>Mic level:</strong>
-  <%= @setting.mic_level %>
+  <%= number_with_precision(@setting.mic_level, :precision => 1) %>
 </p>
 
 <%= link_to 'Edit', edit_setting_path(@setting) %> |

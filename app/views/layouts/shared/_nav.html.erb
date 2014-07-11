@@ -1,17 +1,50 @@
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <ul class="nav" role="navigation">
-          <li><%= link_to "Sound of ", root_path, :class => 'brand' %><%= link_to " Fractions", root_path + 'songs#/index', :class => 'brand' %></li>
-          <%= render 'layouts/shared/loadOrSaveSong' %>
-        </ul>
-        <ul class="nav pull-right login" role="navigation">
-          <%= render 'layouts/shared/login' %>
-        </ul>
-      </div> <!-- End Container-fluid -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- <div class="navbar-header"> -->
 
-    </div> <!-- End Navbar-inner -->
-  </div> <!-- End Navbar -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <%= link_to "Sound of Fractions", root_path, :class => 'navbar-brand' %>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+
+        <% if user_signed_in? %>
+          <li id="nav-songs-info"></li>
+        <% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Songs <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">soon to be song 1</a></li>
+              <li><a href="#">soon to be song 2</a></li>
+              <li><a href="#">soon to be song 3</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Maybe something else</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li class="nav-li" id="nav-user-label"><%= current_user.fullName %></li>
+            <li><%= link_to('Settings', edit_setting_path(current_user.thisUsersID), :class => 'btn btn-inverse btn-small') %></li>
+            <li><%= link_to('Edit account', edit_user_registration_path, :class => 'btn btn-inverse btn-small') %></li>
+            <li><%= link_to('Logout', destroy_user_session_path, :class => 'btn btn-inverse btn-small') %></li>
+          <% else %>
+            <li><p>If you want to Load or Save a Song, please login --></p></li>
+            <li><%= link_to('Login', new_user_session_path, :class => 'btn btn-inverse btn-small')  %></li>
+            <li><%= link_to('Sign up', new_user_registration_path, :class => 'btn btn-inverse btn-small')  %></li>
+          <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    <!-- </div> End Navbar-header -->
+  </div> <!-- End Container-fluid -->
+</div> <!-- End Navbar -->
 
 <div class="row-fluid" id="rails-alerts">
   <% flash.each do |name, msg| %>
